@@ -1,0 +1,563 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		AF689EFB2CDBEDC600DEDF8D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AF689EDD2CDBEDC400DEDF8D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AF689EE42CDBEDC400DEDF8D;
+			remoteInfo = AquaAlert;
+		};
+		AF689F052CDBEDC600DEDF8D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AF689EDD2CDBEDC400DEDF8D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AF689EE42CDBEDC400DEDF8D;
+			remoteInfo = AquaAlert;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AF689EE52CDBEDC400DEDF8D /* AquaAlert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AquaAlert.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF689EFA2CDBEDC600DEDF8D /* AquaAlertTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AquaAlertTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF689F042CDBEDC600DEDF8D /* AquaAlertUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AquaAlertUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		AF689EE72CDBEDC400DEDF8D /* AquaAlert */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = AquaAlert;
+			sourceTree = "<group>";
+		};
+		AF689EFD2CDBEDC600DEDF8D /* AquaAlertTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = AquaAlertTests;
+			sourceTree = "<group>";
+		};
+		AF689F072CDBEDC600DEDF8D /* AquaAlertUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = AquaAlertUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AF689EE22CDBEDC400DEDF8D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF689EF72CDBEDC600DEDF8D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF689F012CDBEDC600DEDF8D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AF689EDC2CDBEDC400DEDF8D = {
+			isa = PBXGroup;
+			children = (
+				AF689EE72CDBEDC400DEDF8D /* AquaAlert */,
+				AF689EFD2CDBEDC600DEDF8D /* AquaAlertTests */,
+				AF689F072CDBEDC600DEDF8D /* AquaAlertUITests */,
+				AF689EE62CDBEDC400DEDF8D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AF689EE62CDBEDC400DEDF8D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AF689EE52CDBEDC400DEDF8D /* AquaAlert.app */,
+				AF689EFA2CDBEDC600DEDF8D /* AquaAlertTests.xctest */,
+				AF689F042CDBEDC600DEDF8D /* AquaAlertUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AF689EE42CDBEDC400DEDF8D /* AquaAlert */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AF689F0E2CDBEDC600DEDF8D /* Build configuration list for PBXNativeTarget "AquaAlert" */;
+			buildPhases = (
+				AF689EE12CDBEDC400DEDF8D /* Sources */,
+				AF689EE22CDBEDC400DEDF8D /* Frameworks */,
+				AF689EE32CDBEDC400DEDF8D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				AF689EE72CDBEDC400DEDF8D /* AquaAlert */,
+			);
+			name = AquaAlert;
+			packageProductDependencies = (
+			);
+			productName = AquaAlert;
+			productReference = AF689EE52CDBEDC400DEDF8D /* AquaAlert.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AF689EF92CDBEDC600DEDF8D /* AquaAlertTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AF689F112CDBEDC600DEDF8D /* Build configuration list for PBXNativeTarget "AquaAlertTests" */;
+			buildPhases = (
+				AF689EF62CDBEDC600DEDF8D /* Sources */,
+				AF689EF72CDBEDC600DEDF8D /* Frameworks */,
+				AF689EF82CDBEDC600DEDF8D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AF689EFC2CDBEDC600DEDF8D /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				AF689EFD2CDBEDC600DEDF8D /* AquaAlertTests */,
+			);
+			name = AquaAlertTests;
+			packageProductDependencies = (
+			);
+			productName = AquaAlertTests;
+			productReference = AF689EFA2CDBEDC600DEDF8D /* AquaAlertTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AF689F032CDBEDC600DEDF8D /* AquaAlertUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AF689F142CDBEDC600DEDF8D /* Build configuration list for PBXNativeTarget "AquaAlertUITests" */;
+			buildPhases = (
+				AF689F002CDBEDC600DEDF8D /* Sources */,
+				AF689F012CDBEDC600DEDF8D /* Frameworks */,
+				AF689F022CDBEDC600DEDF8D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AF689F062CDBEDC600DEDF8D /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				AF689F072CDBEDC600DEDF8D /* AquaAlertUITests */,
+			);
+			name = AquaAlertUITests;
+			packageProductDependencies = (
+			);
+			productName = AquaAlertUITests;
+			productReference = AF689F042CDBEDC600DEDF8D /* AquaAlertUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AF689EDD2CDBEDC400DEDF8D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1610;
+				LastUpgradeCheck = 1610;
+				TargetAttributes = {
+					AF689EE42CDBEDC400DEDF8D = {
+						CreatedOnToolsVersion = 16.1;
+					};
+					AF689EF92CDBEDC600DEDF8D = {
+						CreatedOnToolsVersion = 16.1;
+						TestTargetID = AF689EE42CDBEDC400DEDF8D;
+					};
+					AF689F032CDBEDC600DEDF8D = {
+						CreatedOnToolsVersion = 16.1;
+						TestTargetID = AF689EE42CDBEDC400DEDF8D;
+					};
+				};
+			};
+			buildConfigurationList = AF689EE02CDBEDC400DEDF8D /* Build configuration list for PBXProject "AquaAlert" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AF689EDC2CDBEDC400DEDF8D;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = AF689EE62CDBEDC400DEDF8D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AF689EE42CDBEDC400DEDF8D /* AquaAlert */,
+				AF689EF92CDBEDC600DEDF8D /* AquaAlertTests */,
+				AF689F032CDBEDC600DEDF8D /* AquaAlertUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AF689EE32CDBEDC400DEDF8D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF689EF82CDBEDC600DEDF8D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF689F022CDBEDC600DEDF8D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AF689EE12CDBEDC400DEDF8D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF689EF62CDBEDC600DEDF8D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF689F002CDBEDC600DEDF8D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AF689EFC2CDBEDC600DEDF8D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AF689EE42CDBEDC400DEDF8D /* AquaAlert */;
+			targetProxy = AF689EFB2CDBEDC600DEDF8D /* PBXContainerItemProxy */;
+		};
+		AF689F062CDBEDC600DEDF8D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AF689EE42CDBEDC400DEDF8D /* AquaAlert */;
+			targetProxy = AF689F052CDBEDC600DEDF8D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		AF689F0C2CDBEDC600DEDF8D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AF689F0D2CDBEDC600DEDF8D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AF689F0F2CDBEDC600DEDF8D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"AquaAlert/Preview Content\"";
+				DEVELOPMENT_TEAM = BUARMUVJA8;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = erkaracay.AquaAlert;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AF689F102CDBEDC600DEDF8D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"AquaAlert/Preview Content\"";
+				DEVELOPMENT_TEAM = BUARMUVJA8;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = erkaracay.AquaAlert;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		AF689F122CDBEDC600DEDF8D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BUARMUVJA8;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = erkaracay.AquaAlertTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AquaAlert.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AquaAlert";
+			};
+			name = Debug;
+		};
+		AF689F132CDBEDC600DEDF8D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BUARMUVJA8;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = erkaracay.AquaAlertTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AquaAlert.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AquaAlert";
+			};
+			name = Release;
+		};
+		AF689F152CDBEDC600DEDF8D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BUARMUVJA8;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = erkaracay.AquaAlertUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AquaAlert;
+			};
+			name = Debug;
+		};
+		AF689F162CDBEDC600DEDF8D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BUARMUVJA8;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = erkaracay.AquaAlertUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AquaAlert;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AF689EE02CDBEDC400DEDF8D /* Build configuration list for PBXProject "AquaAlert" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF689F0C2CDBEDC600DEDF8D /* Debug */,
+				AF689F0D2CDBEDC600DEDF8D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AF689F0E2CDBEDC600DEDF8D /* Build configuration list for PBXNativeTarget "AquaAlert" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF689F0F2CDBEDC600DEDF8D /* Debug */,
+				AF689F102CDBEDC600DEDF8D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AF689F112CDBEDC600DEDF8D /* Build configuration list for PBXNativeTarget "AquaAlertTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF689F122CDBEDC600DEDF8D /* Debug */,
+				AF689F132CDBEDC600DEDF8D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AF689F142CDBEDC600DEDF8D /* Build configuration list for PBXNativeTarget "AquaAlertUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF689F152CDBEDC600DEDF8D /* Debug */,
+				AF689F162CDBEDC600DEDF8D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AF689EDD2CDBEDC400DEDF8D /* Project object */;
+}
