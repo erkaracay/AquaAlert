@@ -6,81 +6,100 @@
 //
 
 import SwiftUI
-import CoreData
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
+    @State private var totalWaterIntake: Double = 0
+    @State private var dailyGoal: Double = 3000 // Customize for daily water goal
+    @State private var intakeToAdd: String = ""
+    @FocusState private var isInputFocused: Bool
 
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                    } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
+        ZStack {
+            Color("Background")
+                .ignoresSafeArea()
+                .onTapGesture {
+                    isInputFocused = false
+                }
+
+            VStack(spacing: 16) {
+                Text("Daily Water Intake")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color("HeaderText"))
+                    .padding(.top, 20)
+
+                ZStack {
+                    Image("FlaskImage")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 450, height: 450)
+
+                    GeometryReader { geometry in
+                        let bottleHeight = geometry.size.height
+                        let normalizedIntake = max(0, min(totalWaterIntake, dailyGoal))
+                        let fillHeight = (normalizedIntake / dailyGoal) * bottleHeight
+
+                        ZStack(alignment: .bottom) {
+                            Rectangle()
+                                .fill(Color("Water"))
+                                .frame(height: fillHeight) // Calculate height precisely
+                                .animation(.easeInOut, value: totalWaterIntake)
+                        }
+                        .frame(height: bottleHeight, alignment: .bottom)
+                        .mask(
+                            Image("FlaskImage")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 450, height: 450)
+                        )
+                    }
+                    .frame(width: 450, height: 450)
+                }
+
+                Text("\(Int(totalWaterIntake)) / \(Int(dailyGoal)) ml")
+                    .font(.headline)
+                    .foregroundColor(Color.black)
+                    .padding(.top, 10)
+
+                Spacer()
+
+                HStack {
+                    TextField("Enter ml", text: $intakeToAdd)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .keyboardType(.decimalPad)
+                        .focused($isInputFocused)
+                        .frame(width: 100)
+                        .background(Color.brown)
+                        .cornerRadius(8)
+
+                    Button(action: addWaterIntake) {
+                        Text("Add Water")
+                            .padding(12)
+                            .background(Color("ButtonBackground"))
+                            .foregroundColor(Color("ButtonText"))
+                            .cornerRadius(10)
                     }
                 }
-                .onDelete(perform: deleteItems)
+
+                Spacer()
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
-            }
-            Text("Select an item")
+            .padding()
         }
     }
 
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+    private func addWaterIntake() {
+        if let intake = Double(intakeToAdd), intake > 0 {
+            withAnimation {
+                totalWaterIntake += intake
+                if totalWaterIntake > dailyGoal {
+                    totalWaterIntake = dailyGoal
+                }
             }
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
+            intakeToAdd = ""
         }
     }
 }
 
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
-
 #Preview {
-    ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+    ContentView()
 }
