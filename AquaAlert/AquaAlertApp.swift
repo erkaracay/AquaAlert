@@ -9,12 +9,21 @@ import SwiftUI
 
 @main
 struct AquaAlertApp: App {
-    let persistenceController = PersistenceController.shared
+    @StateObject private var waterIntake = WaterIntake(dailyGoal: 2000)
+    @State private var isCalculatorCompleted = false
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            if isCalculatorCompleted {
+                ContentView(
+                    waterIntake: waterIntake,
+                    onBackToCalculator: { isCalculatorCompleted = false }
+                )
+            } else {
+                CalculatorView(waterIntake: waterIntake) {
+                    isCalculatorCompleted = true
+                }
+            }
         }
     }
 }

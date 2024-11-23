@@ -7,7 +7,15 @@
 
 import SwiftUI
 
-struct SharedConstants {
-    // Will add shared constants here as needed
+class WaterIntake: ObservableObject {
+    @Published var dailyGoal: Double
 
+    init(dailyGoal: Double) {
+        self.dailyGoal = dailyGoal
+    }
+}
+
+enum AppState {
+    case calculator
+    case content
 }

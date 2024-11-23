@@ -1,97 +1,134 @@
 import SwiftUI
 
 struct CalculatorView: View {
-    @FocusState private var isInputFocused: Bool
+    @ObservedObject var waterIntake: WaterIntake
+    var onComplete: () -> Void
+
     @State private var weight: String = ""
-    @State private var height: String = ""
     @State private var gender: String = "Male"
     @State private var age: Double = 21
-    
-    // Computed Property to Calculate Water Needs
-    private var waterNeeds: String {
-        guard let weightValue = Double(weight),
-              let heightValue = Double(height) else {
-            return "Invalid input for weight or height"
+    @State private var exerciseDuration: Double = 0
+    @State private var climate: String = "Temperate"
+    @State private var isPregnantOrBreastfeeding: Bool = false
+
+    @FocusState private var isWeightFieldFocused: Bool // Manage focus explicitly
+
+    // Computed property to validate weight
+    private var isWeightValid: Bool {
+        guard let weightValue = Double(weight), weightValue > 0 else {
+            return false
         }
-        
-        var baseWater = weightValue * 0.033 // Basic formula: 33ml per kg
-        
-        // Adjust based on gender
-        baseWater += gender == "Male" ? 0.5 : 0
-        
-        // Adjust based on age
-        if age < 30 {
-            baseWater += 0.2
-        } else if age >= 30 && age < 55 {
-            baseWater += 0.1
-        }
-        
-        // Add height adjustment (optional tweak)
-        if heightValue > 170 {
-            baseWater += 0.3
-        }
-        
-        return String(format: "%.2f liters/day", baseWater)
+        return true
     }
-    
+
+    private var calculatedWaterIntake: Double {
+        guard let weightValue = Double(weight) else {
+            return 0.0
+        }
+
+        var baseWater = weightValue * 35.0
+
+        if age > 55 {
+            baseWater *= 0.9
+        }
+
+        if gender == "Male" {
+            baseWater *= 1.1
+        } else {
+            baseWater *= 0.9
+        }
+
+        let additionalWaterFromExercise = (exerciseDuration / 30) * 350.0
+        baseWater += additionalWaterFromExercise
+
+        switch climate {
+        case "Hot":
+            baseWater += 500.0
+        case "Cold":
+            baseWater -= 200.0
+        default:
+            break
+        }
+
+        if isPregnantOrBreastfeeding {
+            baseWater += 500.0
+        }
+
+        return baseWater
+    }
+
     var body: some View {
         ZStack {
-            Color("Background")
-                .ignoresSafeArea()
-                .onTapGesture {
-                    isInputFocused = false
-                }
-            
-            VStack {
-                Text("Calculate Your Water Needs")
-                    .foregroundColor(Color.headerText)
-                    .fontWeight(.semibold)
-                    .font(.title)
-                
+            Color.clear
+                .contentShape(Rectangle())
+                .onTapGesture { isWeightFieldFocused = false }
+
+            NavigationView {
                 Form {
-                    Section("Height and Weight") {
+                    Section(header: Text("Personal Information")) {
                         TextField("Weight (kg)", text: $weight)
                             .keyboardType(.decimalPad)
-                            .focused($isInputFocused)
-                        
-                        TextField("Height (cm)", text: $height)
-                            .keyboardType(.decimalPad)
-                            .focused($isInputFocused)
-                    }
-                    
-                    Section("Age and Gender") {
+                            .focused($isWeightFieldFocused)
                         VStack(alignment: .leading) {
                             Text("Age: \(Int(age))")
                                 .fontWeight(.semibold)
-                                .frame(alignment: .center)
-                            
+
                             Slider(value: $age, in: 18...99, step: 1)
-                                .accentColor(Color.water)
+                                .accentColor(Color.blue)
                         }
                         .padding(.vertical, 8)
-                        
+
                         Picker("Gender", selection: $gender) {
                             ForEach(["Male", "Female"], id: \.self) {
                                 Text($0).tag($0)
                             }
                         }
                     }
+
+                    Section(header: Text("Physical Activity and Climate")) {
+                        VStack(alignment: .leading) {
+                            Text("Daily Exercise Duration: \(Int(exerciseDuration)) minutes")
+                                .fontWeight(.semibold)
+
+                            Slider(value: $exerciseDuration, in: 0...120, step: 10)
+                                .accentColor(Color.blue)
+                        }
+                        .padding(.vertical, 8)
+
+                        Picker("Climate Conditions", selection: $climate) {
+                            ForEach(["Temperate", "Hot", "Cold"], id: \.self) {
+                                Text($0).tag($0)
+                            }
+                        }
+                    }
+
+                    Section(header: Text("Special Conditions")) {
+                        Toggle("Pregnant or Breastfeeding", isOn: $isPregnantOrBreastfeeding)
+                            .disabled(gender == "Male")
+                            .onChange(of: gender) { _, newGender in
+                                if newGender == "Male" {
+                                    isPregnantOrBreastfeeding = false
+                                }
+                            }
+                    }
+
+                    Section(footer: Text("Your daily water intake: \(calculatedWaterIntake / 1000, specifier: "%.2f") liters")) {
+                        Button("Done") {
+                            waterIntake.dailyGoal = calculatedWaterIntake
+                            onComplete()
+                        }
+                        .disabled(!isWeightValid)
+                    }
                 }
-                .scrollContentBackground(.hidden)
-                .tint(Color.water)
-                
-                // Centered Water Needs Text
-                Text("Your daily water needs: \(waterNeeds)")
-                    .font(.headline)
-                    .multilineTextAlignment(.center)
-                    .padding()
-                    .foregroundColor(Color.primary)
+                .navigationTitle("Water Intake Calculator")
             }
-            .padding()
         }
     }
 }
 
 #Preview {
-    CalculatorView()
+    CalculatorView(
+        waterIntake: WaterIntake(dailyGoal: 2000),
+        onComplete: { print("Calculation complete!") }
+    )
 }

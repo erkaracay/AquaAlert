@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var waterIntake: WaterIntake
+    var onBackToCalculator: () -> Void
+
     @State private var totalWaterIntake: Double = 0
-    @State private var dailyGoal: Double = 3000 // Customize for daily water goal
     @State private var intakeToAdd: String = ""
     @FocusState private var isInputFocused: Bool
 
@@ -17,9 +19,7 @@ struct ContentView: View {
         ZStack {
             Color("Background")
                 .ignoresSafeArea()
-                .onTapGesture {
-                    isInputFocused = false
-                }
+                .background(Color.clear.contentShape(Rectangle()))
 
             VStack(spacing: 16) {
                 Text("Daily Water Intake")
@@ -36,13 +36,13 @@ struct ContentView: View {
 
                     GeometryReader { geometry in
                         let bottleHeight = geometry.size.height
-                        let normalizedIntake = max(0, min(totalWaterIntake, dailyGoal))
-                        let fillHeight = (normalizedIntake / dailyGoal) * bottleHeight
+                        let normalizedIntake = max(0, min(totalWaterIntake, waterIntake.dailyGoal))
+                        let fillHeight = (normalizedIntake / waterIntake.dailyGoal) * bottleHeight
 
                         ZStack(alignment: .bottom) {
                             Rectangle()
                                 .fill(Color("Water"))
-                                .frame(height: fillHeight) // Calculate height precisely
+                                .frame(height: fillHeight)
                                 .animation(.easeInOut, value: totalWaterIntake)
                         }
                         .frame(height: bottleHeight, alignment: .bottom)
@@ -56,7 +56,7 @@ struct ContentView: View {
                     .frame(width: 450, height: 450)
                 }
 
-                Text("\(Int(totalWaterIntake)) / \(Int(dailyGoal)) ml")
+                Text("\(Int(totalWaterIntake)) / \(Int(waterIntake.dailyGoal)) ml")
                     .font(.headline)
                     .foregroundColor(Color.black)
                     .padding(.top, 10)
@@ -82,17 +82,29 @@ struct ContentView: View {
                 }
 
                 Spacer()
+
+                Button(action: onBackToCalculator) {
+                    Text("Back to Calculator")
+                        .fontWeight(.bold)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                }
+                .padding(.bottom, 20)
             }
             .padding()
-        }
+        }.dismissKeyboardOnTap()
+        .onTapGesture { isInputFocused = false }
     }
 
     private func addWaterIntake() {
         if let intake = Double(intakeToAdd), intake > 0 {
             withAnimation {
                 totalWaterIntake += intake
-                if totalWaterIntake > dailyGoal {
-                    totalWaterIntake = dailyGoal
+                if totalWaterIntake > waterIntake.dailyGoal {
+                    totalWaterIntake = waterIntake.dailyGoal
                 }
             }
             intakeToAdd = ""
@@ -101,5 +113,8 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    ContentView(
+        waterIntake: WaterIntake(dailyGoal: 2500),
+        onBackToCalculator: { print("Navigating back to CalculatorView") }
+    )
 }
