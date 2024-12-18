@@ -14,14 +14,14 @@ struct ContentView: View {
     @State private var totalWaterIntake: Double = 0
     @State private var intakeToAdd: String = ""
     @FocusState private var isInputFocused: Bool
+    @State private var wavePhase: CGFloat = 0.0
 
     var body: some View {
         ZStack {
             Color("Background")
                 .ignoresSafeArea()
-                .background(Color.clear.contentShape(Rectangle()))
-
-            ScrollView { // Adding ScrollView to make the view scrollable when keyboard appears
+            
+            ScrollView {
                 VStack(spacing: 16) {
                     Text("Daily Water Intake")
                         .font(.largeTitle)
@@ -30,34 +30,38 @@ struct ContentView: View {
                         .padding(.top, 20)
                     
                     ZStack {
-                        Image("FlaskImage")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 450, height: 450)
+                        BottleShape()
+                            .stroke(Color.black, lineWidth: 2)
+                            .frame(width: 200, height: 400)
                         
                         GeometryReader { geometry in
                             let bottleHeight = geometry.size.height
                             let normalizedIntake = max(0, min(totalWaterIntake, waterIntake.dailyGoal))
-                            let fillHeight = (normalizedIntake / waterIntake.dailyGoal) * bottleHeight
-
+                            
+                            // Dolum yüksekliği hesaplama
+                            let fillHeight = (normalizedIntake / waterIntake.dailyGoal) * bottleHeight * 2
+                            
+                            // Minimum görünürlük için alt limit
+                            let adjustedFillHeight = max(fillHeight, 150) // Min 5 piksel dolum görünür
+                            
                             ZStack(alignment: .bottom) {
-                                Rectangle()
+                                WaveShape(amplitude: 10, frequency: 2, phase: wavePhase)
                                     .fill(Color("Water"))
-                                    .frame(height: fillHeight)
-                                    .padding(.bottom, 20) // Adjust this value based on the offset
-                                    .animation(.easeInOut, value: totalWaterIntake)
+                                    .frame(width: geometry.size.width, height: adjustedFillHeight)
+                                    .offset(y: bottleHeight - adjustedFillHeight)
+                                    .onAppear {
+                                        withAnimation(.linear(duration: 11).repeatForever(autoreverses: false)) {
+                                            wavePhase = .pi * 2
+                                        }
+                                    }
                             }
-                            .frame(height: bottleHeight, alignment: .bottom)
-                            .mask(
-                                Image("FlaskImage")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: geometry.size.width, height: bottleHeight)
-                                    .alignmentGuide(.bottom) { d in d[.bottom] }
-                            )
                         }
-                        .frame(width: 450, height: 450)
-
+                        
+                        .frame(width: 200, height: 400)
+                        .mask(
+                            BottleShape()
+                                .frame(width: 200, height: 400)
+                        )
                     }
                     
                     VStack {
@@ -100,7 +104,7 @@ struct ContentView: View {
         }
         .onTapGesture { isInputFocused = false }
     }
-
+    
     private func addWaterIntake() {
         if let intake = Double(intakeToAdd), intake > 0 {
             withAnimation {
