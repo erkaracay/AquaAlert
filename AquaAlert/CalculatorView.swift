@@ -11,7 +11,7 @@ struct CalculatorView: View {
     @State private var climate: String = "Temperate"
     @State private var isPregnantOrBreastfeeding: Bool = false
 
-    @FocusState private var isWeightFieldFocused: Bool // Manage focus explicitly
+    @FocusState private var isWeightFieldFocused: Bool
 
     // Computed property to validate weight
     private var isWeightValid: Bool {
@@ -73,13 +73,29 @@ struct CalculatorView: View {
                             Text("Age: \(Int(age))")
                                 .fontWeight(.semibold)
 
-                            Slider(value: $age, in: 18...99, step: 1)
-                                .accentColor(Color.blue)
+                            HStack() {
+                                Button("", systemImage: "minus"){
+                                    if age > 18 {
+                                        age -= 1
+                                    }
+                                }.disabled(age == 18)
+                                    .buttonStyle(BorderlessButtonStyle())
+                                
+                                Slider(value: $age, in: 18...99, step: 1)
+                                    .accentColor(Color.blue)
+                                
+                                Button("", systemImage: "plus"){
+                                    if age < 99 {
+                                        age += 1
+                                    }
+                                }.disabled(age == 99)
+                                    .buttonStyle(BorderlessButtonStyle())
+                            }
                         }
                         .padding(.vertical, 8)
 
                         Picker("Gender", selection: $gender) {
-                            ForEach(["Male", "Female"], id: \.self) {
+                            ForEach(["Male", "Female"], id: \ .self) {
                                 Text($0).tag($0)
                             }
                         }
@@ -96,7 +112,7 @@ struct CalculatorView: View {
                         .padding(.vertical, 8)
 
                         Picker("Climate Conditions", selection: $climate) {
-                            ForEach(["Temperate", "Hot", "Cold"], id: \.self) {
+                            ForEach(["Temperate", "Hot", "Cold"], id: \ .self) {
                                 Text($0).tag($0)
                             }
                         }
@@ -128,7 +144,6 @@ struct CalculatorView: View {
 
 #Preview {
     CalculatorView(
-        waterIntake: WaterIntake(dailyGoal: 2000),
-        onComplete: { print("Calculation complete!") }
+        waterIntake: WaterIntake(dailyGoal: 2000), onComplete: {}
     )
 }

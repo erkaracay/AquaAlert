@@ -21,81 +21,83 @@ struct ContentView: View {
                 .ignoresSafeArea()
                 .background(Color.clear.contentShape(Rectangle()))
 
-            VStack(spacing: 16) {
-                Text("Daily Water Intake")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .foregroundColor(Color("HeaderText"))
-                    .padding(.top, 20)
+            ScrollView { // Adding ScrollView to make the view scrollable when keyboard appears
+                VStack(spacing: 16) {
+                    Text("Daily Water Intake")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .foregroundColor(Color("HeaderText"))
+                        .padding(.top, 20)
+                    
+                    ZStack {
+                        Image("FlaskImage")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 450, height: 450)
+                        
+                        GeometryReader { geometry in
+                            let bottleHeight = geometry.size.height
+                            let normalizedIntake = max(0, min(totalWaterIntake, waterIntake.dailyGoal))
+                            let fillHeight = (normalizedIntake / waterIntake.dailyGoal) * bottleHeight
 
-                ZStack {
-                    Image("FlaskImage")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
+                            ZStack(alignment: .bottom) {
+                                Rectangle()
+                                    .fill(Color("Water"))
+                                    .frame(height: fillHeight)
+                                    .padding(.bottom, 20) // Adjust this value based on the offset
+                                    .animation(.easeInOut, value: totalWaterIntake)
+                            }
+                            .frame(height: bottleHeight, alignment: .bottom)
+                            .mask(
+                                Image("FlaskImage")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: geometry.size.width, height: bottleHeight)
+                                    .alignmentGuide(.bottom) { d in d[.bottom] }
+                            )
+                        }
                         .frame(width: 450, height: 450)
 
-                    GeometryReader { geometry in
-                        let bottleHeight = geometry.size.height
-                        let normalizedIntake = max(0, min(totalWaterIntake, waterIntake.dailyGoal))
-                        let fillHeight = (normalizedIntake / waterIntake.dailyGoal) * bottleHeight
-
-                        ZStack(alignment: .bottom) {
-                            Rectangle()
-                                .fill(Color("Water"))
-                                .frame(height: fillHeight)
-                                .animation(.easeInOut, value: totalWaterIntake)
+                    }
+                    
+                    VStack {
+                        Text("\(Int(totalWaterIntake)) / \(Int(waterIntake.dailyGoal)) ml")
+                            .font(.headline)
+                            .foregroundColor(Color.black)
+                            .padding(.top, 10)
+                        
+                        Button(action: onBackToCalculator) {
+                            Text("Back to Calculator")
+                                .font(.caption)
+                                .padding(.top, 1)
+                                .underline()
                         }
-                        .frame(height: bottleHeight, alignment: .bottom)
-                        .mask(
-                            Image("FlaskImage")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 450, height: 450)
-                        )
                     }
-                    .frame(width: 450, height: 450)
-                }
-
-                Text("\(Int(totalWaterIntake)) / \(Int(waterIntake.dailyGoal)) ml")
-                    .font(.headline)
-                    .foregroundColor(Color.black)
-                    .padding(.top, 10)
-
-                Spacer()
-
-                HStack {
-                    TextField("Enter ml", text: $intakeToAdd)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .keyboardType(.decimalPad)
-                        .focused($isInputFocused)
-                        .frame(width: 100)
-                        .background(Color.brown)
-                        .cornerRadius(8)
-
-                    Button(action: addWaterIntake) {
-                        Text("Add Water")
-                            .padding(12)
-                            .background(Color("ButtonBackground"))
-                            .foregroundColor(Color("ButtonText"))
-                            .cornerRadius(10)
+                    
+                    Spacer()
+                    
+                    HStack {
+                        TextField("Enter ml", text: $intakeToAdd)
+                            .keyboardType(.decimalPad)
+                            .focused($isInputFocused)
+                            .frame(width: 100)
+                            .cornerRadius(8)
+                            .foregroundColor(.black)
+                            .underlineTextField()
+                        
+                        Button(action: addWaterIntake) {
+                            Text("Add Water")
+                                .padding(12)
+                                .background(Color("ButtonBackground"))
+                                .foregroundColor(Color("ButtonText"))
+                                .cornerRadius(10)
+                        }
                     }
+                    Spacer()
                 }
-
-                Spacer()
-
-                Button(action: onBackToCalculator) {
-                    Text("Back to Calculator")
-                        .fontWeight(.bold)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
-                }
-                .padding(.bottom, 20)
+                .padding()
             }
-            .padding()
-        }.dismissKeyboardOnTap()
+        }
         .onTapGesture { isInputFocused = false }
     }
 
@@ -109,6 +111,16 @@ struct ContentView: View {
             }
             intakeToAdd = ""
         }
+    }
+}
+
+extension View {
+    func underlineTextField() -> some View {
+        self
+            .padding(.vertical, 10)
+            .overlay(Rectangle().frame(height: 2).padding(.top, 35))
+            .foregroundColor(.water)
+            .padding(10)
     }
 }
 
